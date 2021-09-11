@@ -1,11 +1,8 @@
 var express=require("express");
 var mongoose=require("mongoose");
 var bodyParser=require("body-parser");
-const http = require('http')
-const app=require('./app')
-const server = http.createServer(app);
-// var app=express();
-const port = process.env.PORT || 3000
+var app=express();
+// const port = process.env.PORT || 3000
 app.set('view engine','ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -74,8 +71,12 @@ app.post("/deleteAll", function (req, res) {
     });
     res.redirect("/");
   });  
-app.listen(port,function()
-{
-    console.log("Server is listening to port 3000");
-})
+  let port = process.env.PORT;
+  if (port == null || port == "") {
+    port = 3000;
+  }
+  
+  app.listen(port, function () {
+    console.log("Server has started successfully");
+  });
 
