@@ -6,8 +6,18 @@ var app=express();
 app.set('view engine','ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
-const mongoDbURL = process.env.MONGODB_URL || "mongodb://localhost:27017/todolistDB"
-mongoose.connect(mongoDbURL,{useNewUrlParser:true,useUnifiedTopology:true});
+
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://diksha:<password>@to-do-list.rlk3x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
+// const mongoDbURL = process.env.MONGODB_URL || "mongodb://localhost:27017/todolistDB"
+// mongoose.connect(mongoDbURL,{useNewUrlParser:true,useUnifiedTopology:true});
 const itemSchema={
     name:String
 }
