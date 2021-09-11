@@ -53,6 +53,8 @@ button.btn{
   overflow: hidden;
   transition: 0.2s;
   color: black;
+  margin-left: 10px;
+  width: 60px;
 }
 button.btn.btn-success:hover{
   color: black;
@@ -63,6 +65,9 @@ button.btn.btn-success:hover{
   width: 60px;
   background-color: blue;
   
+}
+button.btn.btn-danger{
+  margin-left: 325px;
 }
 
 button.btn.btn-danger:hover {
