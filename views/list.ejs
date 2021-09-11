@@ -1,0 +1,29 @@
+<%- include("header") -%>
+<div class="main">
+  <h1>TO-DO-LIST</h1>
+  <form class="submit" action="/add" method="post">
+    <input type="text" placeholder="Add task" name="n" autocomplete="off"/>
+    <button class="btn btn-success" type="submit"><strong>ADD</strong></button>
+  </form>
+  <div class="taskslist">
+    <% newListItems.forEach(function(item){ %>
+    <form action="/delete" method="post">
+      <ul>
+        <li>
+          <input
+            value="<%= item._id %>"
+            type="checkbox"
+            name="checkbox"
+            onChange="this.form.submit()"
+          />
+          <label><%= item.name %></label>
+        </li>
+      </ul>
+    </form>
+    <% }); %>
+    <form action="/deleteAll" method="post">
+      <button id="clear" class="btn btn-danger" type="submit"><strong>Clear</strong></button>
+    </form>
+  </div>
+</div>
+
