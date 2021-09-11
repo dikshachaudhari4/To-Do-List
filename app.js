@@ -8,7 +8,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://diksha:<password>@to-do-list.rlk3x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://diksha:Naina@4321@to-do-list.rlk3x.mongodb.net/todolistDB?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
